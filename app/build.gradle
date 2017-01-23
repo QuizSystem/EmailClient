@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -20,10 +22,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
+    apk files('libs/activation.jar')
+    apk files('libs/additional.jar')
+    apk files('libs/mail.jar')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.google.apis:google-api-services-pubsub:v1-rev5-1.20.0'
+    compile 'com.google.android.gms:play-services-plus:7.8.0'
+    compile 'com.google.api-client:google-api-client-android:1.22.0'
+    compile 'com.google.api-client:google-api-client-gson:1.20.0'
+    compile 'com.google.apis:google-api-services-gmail:v1-rev55-1.22.0'
+    compile files('libs/javax.mail-1.4.5.jar')
 }
